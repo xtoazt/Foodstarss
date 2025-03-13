@@ -1,823 +1,228 @@
-
 <!DOCTYPE html>
-<html lang="en-us" id="mainhtml">
-<head>
-    <script src="https://game-cdn.poki.com/scripts/v2/poki-sdk.js"></script>
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <!-- FOODSTARS Poki VERSION 6/28/2024 3:24 AM -->
-    <script>
-        window.sdkVersion = 'FoodStarsPoki';
-        function postData(url, data, async = true) {
-            const xhr = new XMLHttpRequest();
-            xhr.open('POST', url, async);
-            xhr.setRequestHeader('Content-Type', 'application/json');
-            xhr.onreadystatechange = function () {
-                if (xhr.readyState === 4 && xhr.status === 200) {
-                    console.log('Response from ' + url + ': ' + xhr.responseText);
+<html lang="en">
+    <head>
+        <title>FoodStars.io Game Files - Crazy Games</title>
+        <link href="https://www.crazygames.com/game/foodstars-io" rel="canonical"/>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?display=swap&amp;family=Nunito:wght@400;600;700;800;900"/>
+        <meta charset="UTF-8"/>
+        <meta name="robots" content="noindex, follow"/>
+        <meta name="description" content="The game files for FoodStars.io, a free browser game on CrazyGames.com"/>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+        <meta http-equiv="Accept-CH" content="DPR"/>
+        <meta name="viewport" content="width=device-width, maximum-scale=1.0, initial-scale=1.0, user-scalable=no, minimal-ui"/>
+        <style id="ziggyLoaderStyles">
+            html {
+                width: 100%;
+                height: 100%;
+                position: relative;
+            }
+
+            body {
+                width: 100%;
+                height: 100%;
+                position: relative;
+                background-color: #13141E;
+                overflow: hidden;
+            }
+
+            .ziggyLoader {
+                width: 100%;
+                height: 100%;
+                position: relative;
+            }
+
+            .container {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                text-align: center;
+                flex-direction: column;
+                width: 100%;
+                height: 100%;
+                color: #F9FAFF;
+                font-family: 'Nunito',Arial,"Helvetica Neue",Helvetica,sans-serif;
+                font-style: normal;
+                font-weight: 400;
+                font-size: 14px;
+                position: absolute;
+                z-index: 3;
+                opacity: 0.5;
+            }
+
+            @keyframes bob {
+                0% {
+                    transform: translate(0px, 0px);
                 }
-            };
-            xhr.send(JSON.stringify(data));
-        }
-        function requestNewVersion() {
-            location.reload(true);
-        }
-        window.alert = function () { };
-        window.dataLayer = window.dataLayer || [];
-        function reportLoadingStart() {
-            postData('https://foodstars.io/api/loadingStart', { gameVersion: window.sdkVersion });
-        }
-        function reportVideoAdSource(source) {
-        }
-        function reportLoadingFinished() {
-            var banrs = document.getElementById("fullscreen-banrs");
-            if (banrs)
-                banrs.style.display = "block";
 
-            postData('https://foodstars.io/api/loadingFinished', { gameVersion: window.sdkVersion });
-            window.sessionStorage.setItem('playStartTime', new Date().toISOString());
-        }
-        function reportCustom(reportEventName, sdkVersion) {
-        }
-        function onMapPlayStarted(mapName) {
-            const startTime = new Date().toISOString();
-            window.sessionStorage.setItem('mapPlayStartTime', startTime);
-            window.sessionStorage.setItem('currentMapName', mapName);
-        }
-        function onMapPlayEnd() {
-            const playEndTime = new Date();
-            const playStartTime = window.sessionStorage.getItem('mapPlayStartTime');
-            const mapName = window.sessionStorage.getItem('currentMapName');
-            const sdkVersion = window.sdkVersion || 'Poki';  // Default to 'Vanilla' if sdkVersion is not set
-
-            if (playStartTime && mapName) {
-                const duration = playEndTime - new Date(playStartTime);
-
-                postData('https://foodstars.io/api/trackMapPlaytime', {
-                    timestamp: playEndTime.toISOString(),
-                    duration: duration,
-                    gameVersion: sdkVersion,
-                    mapName: mapName
-                }, false);
-                // Clear the session storage items
-                window.sessionStorage.removeItem('mapPlayStartTime');
-                window.sessionStorage.removeItem('currentMapName');
-            }
-        }
-    </script>
-    <link rel="manifest" href="manifest.webmanifest">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-    <title>FoodStars.io | Best 3D Online Multiplayer Battle Royale Game</title>
-    <meta name="description" content="Join the action in FoodStars.io, a thrilling 3D multiplayer battle royale game that requires no download. Defeat opponents and claim victory in this epic online gaming experience.">
-    <meta name="keywords" content="FoodStars.io, battle royale, 3D game, online multiplayer, free game, brawl stars, browser-based, shooting game, battle royale game, IO game, tank game, online gaming, multiplayer game, friends, weapons, coins, action-packed">
-    <meta name="author" content="Legion Platforms">
-    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-    <link rel="stylesheet" href="TemplateData/style.css">
-    <meta content="FoodStars.io | FPS Game" property="og:title" />
-    <meta content="Join the action in FoodStars.io, a thrilling 3D multiplayer battle royale game that requires no download. Defeat opponents and claim victory in this epic online gaming experience." property="og:description" />
-    <meta content="https://foodstars.io/TemplateData/background-og.webp" property="og:image" />
-    <meta property="og:url" content="https://foodstars.io" />
-    <meta property="og:type" content="website" />
-    <meta property="og:image:width" content="192">
-    <meta property="og:image:height" content="108">
-    <meta property="og:site_name" content="foodstars.io" />
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="FoodStars.io | FPS Game">
-    <meta name="twitter:description" content="Join the action in FoodStars.io, a thrilling 3D multiplayer battle royale game that requires no download. Defeat opponents and claim victory in this epic online gaming experience.">
-    <meta name="twitter:image" content="https://foodstars.io/TemplateData/background-og.webp">
-    <meta name="twitter:url" content="https://foodstars.io">
-    <meta content="#ffd900" data-react-helmet="true" name="theme-color" />
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Fjalla+One&display=swap');
-    </style>
-    <meta name="apple-mobile-web-app-title" content="foodstars.io">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <link rel="preload" href="https://foodstars.io/TemplateData/background.webp" as="image">
-    <meta itemprop="image primaryImageOfPage" content="https://foodstars.io/TemplateData/background.webp">
-    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
-    <!-- Youtube Game Schema -->
-    <script type="application/ld+json">
-        {
-            "@context": "http://schema.org",
-            "@type":"VideoGame",
-            "publisher": "Legion Platforms",
-            "name":[
-                {
-                    "@language":"en",
-                    "@value":"foodstars.io"
+                50% {
+                    transform: translate(0px, 10.5px);
                 }
-            ],
-            "description":[
-                {
-                    "@language":"en",
-                    "@value":"foodstars.io is a free Multiplayer Online FPS Game. No Download needed! Become the #1 Kour player today in this first-person shooter IO Kour game."
+
+                100% {
+                    transform: translate(0px, 0px);
                 }
-            ],
-            "applicationCategory":[
-                "Game"
-            ],
-            "operatingSystem":[
-                "WEB"
-            ],
-            "genre":[
-                "Battle Royale",
-                "FPS",
-                "CSGO",
-                "Counter Strike",
-                "Shooter",
-                "Multiplayer"
-            ],
-            "url":"https://foodstars.io/",
-            "image":"TemplateData/background.webp",
-            "screenshot":"TemplateData/background.webp"
-        }
-    </script>
-</head>
-<body class="dark" style="background-color: black;">
-    <script>
-
-        window.isMouseLocked = false;
-        document.addEventListener('keydown', function (event) {
-            if (window.isMouseLocked && (event.keyCode === 116 || event.keyCode === 82 && event.ctrlKey)) {
-                event.preventDefault();
             }
-        });
-        function openPaymentStation(token) {
-            //var paymentUrl = `https://sandbox-secure.xsolla.com/paystation4/?token=${token}`;
-            //window.open(paymentUrl, 'PaymentStation', 'width=800,height=600');
-            var options = {
-                access_token: token
-                //sandbox: true
-            };
-            var s = document.createElement('script');
-            s.type = "text/javascript";
-            s.async = true;
-            s.src = "//cdn.xsolla.net/embed/paystation/1.2.7/widget.min.js";
-            s.addEventListener('load', function (e) {
-                console.log("init XPayStationWidget");
-                XPayStationWidget.init(options);
-                console.log("open XPayStationWidget");
-                XPayStationWidget.open();
-
-                XPayStationWidget.on(XPayStationWidget.eventTypes.STATUS, function (event, data) {
-                    var paymentInfoAsString = JSON.stringify(data.paymentInfo);
-                    console.log("js: paymentInfoAsString: " + paymentInfoAsString);
-                    unityInstance.SendMessage('XsollaPayments', 'OnXsollaWindowUpdate', paymentInfoAsString);
-                });
-
-                XPayStationWidget.on(XPayStationWidget.eventTypes.CLOSE, function (event, data) {
-                    unityInstance.SendMessage('XsollaPayments', 'OnXsollaWindowUpdate', "closed");
-                });
-
-            }, false);
-            var head = document.getElementsByTagName('head')[0];
-            head.appendChild(s);
-        }
-    </script>
-    <div id="videoad"></div>
-    <div id="fullscreen-banrs" style="pointer-events: all; display: none; user-select: none; position: absolute; top: 0; right: 0; bottom: 0; left: 0;">
-        <!-- ads would go here -->
-    </div>
-    <div id="rotateMessage" class="rotate-message">
-        <p>Rotate to landscape mode!</p>
-        <img src="https://foodstars.io/rotate.webp" alt="rotate your device to landscape mode!" style="width: 50%;" />
-        <button id="usePortraitBtn">  Use Portrait Mode  </button>
-    </div>
-    <script src="rotateDevice.js"></script>
-    <script>
-        let preventUnloadActive = false;
-
-        var beforeUnloaded = function (e) {
-            // Step 1:
-            onMapPlayEnd();
-
-            // Step 2:
-            const playEndTime = new Date();
-            const playStartTime = window.sessionStorage.getItem('playStartTime');
-
-            if (playStartTime) {
-                const duration = playEndTime - new Date(playStartTime);  // Calculate duration in milliseconds
-
-                // `false` to make the request synchronous, though deprecated
-                postData('/api/trackPlaytime', {
-                    timestamp: playEndTime.toISOString(),
-                    duration: duration,
-                    gameVersion: sdkVersion
-                }, false);
-            }
-
-            // The following text will be shown in a standard browser dialog
-            if (preventUnloadActive) {
-                const confirmationMessage = 'Are you sure you want to leave foodstars.io?';
-                e.returnValue = confirmationMessage; // Legacy method for cross-browser compatibility
-                return confirmationMessage; // Some browsers require this to work correctly
-            }
-        };
-
-        window.addEventListener('beforeunload', beforeUnloaded);
-
-        function PreventCtrlW() {
-            preventUnloadActive = true;
-        }
-
-        function AllowCtrlW() {
-            //window.removeEventListener('beforeunload', preventUnload);
-        }
-        function goDeepFullscreen() {
-        }
-        function goFullscreenMobile() {
-            var elem = document.documentElement;
-            if (elem.requestFullscreen) {
-                elem.requestFullscreen();
-            } else if (elem.mozRequestFullScreen) { // Firefox
-                elem.mozRequestFullScreen();
-            } else if (elem.webkitRequestFullscreen) { // Chrome, Safari and Opera
-                elem.webkitRequestFullscreen();
-            } else if (elem.msRequestFullscreen) { // IE/Edge
-                elem.msRequestFullscreen();
-            }
-            if (screen.orientation && screen.orientation.lock) {
-                screen.orientation.lock('landscape').catch(function () {
-                    // Ignore errors for unsupported browsers
-                });
-            }
-            window.addEventListener('resize', function () {
-            });
-            setTimeout(function () {
-                window.scrollTo(0, 1);
-            }, 100);
-        }
-        function copyCurrentURL() {
-            let currentUrl = window.location.href;
-            const el = document.createElement('textarea');
-            el.value = currentUrl;
-            document.body.appendChild(el);
-            el.select();
-            document.execCommand('copy');
-            document.body.removeChild(el);
-        }
-        function copyString(x) {
-            const el = document.createElement('textarea');
-            el.value = x;
-            document.body.appendChild(el);
-            el.select();
-            document.execCommand('copy');
-            document.body.removeChild(el);
-        }
-        function SetCursor(x) {
-            console.log("SetCursor - " + x);
-            document.getElementById("mainhtml").style.cursor = x;
-        }
-        function reload() {
-            location.reload();
-        }
-        function setCursor(cursorStyle) {
-            var canvas = document.getElementById('unity-canvas');
-            canvas.style.cursor = cursorStyle;
-        }
-    </script>
-    <div id="unity-container" style="position: absolute; width: 100%; height: 100%">
-        <canvas id="unity-canvas" width=1920 height=1080 style="width: 100%; height: 100%; user-select: none; -webkit-user-select: none;"></canvas>
-    </div>
-    <div id="loading-cover" style="display: block; background-image: url('https://foodstars.io/TemplateData/background.webp') ">
-        <div id="loading-cover-2"></div>
-        <img class="foodstarsTitle" src="https://foodstars.io/foodstars-title.webp">
-        <p id="loadingTxt">Loading Kour Essentials...</p>
-        <p id="loadingTxtMinimal"></p>
-        <div id="unity-loading-bar" style="user-select: none; left: 0; right: 0;">
-            <div id="unity-progress-bar-empty" style="display: none; margin-top: 0px;">
-                <div id="unity-progress-bar-full"></div>
-            </div>
-            <div style="top: 28px;" class="spinner"></div>
-        </div>
-        <div id="unity-loading-bar-fast" style="user-select: none; display: none; margin-top: 0px;">
-            <span class="fast-loader"></span>
-        </div>
-        <img id="refreshImage" src="https://foodstars.io/refresh1.webp" alt="Please wait for the game to load.">
+        </style>
         <script>
-            document.addEventListener("DOMContentLoaded", function () {
-                onWindowResize();
-                const isiOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
-                if (isiOS) {
-                    document.querySelector('meta[name="theme-color"]').setAttribute("content", "#1f1f1f");
+            window.czyVariables = {
+                "countryCode": "US",
+                "device": {
+                    "os": {
+                        "name": "Mac OS",
+                        "version": "10.15.7"
+                    },
+                    "browser": {
+                        "name": "Chrome",
+                        "version": "134.0.0.0",
+                        "major": "134"
+                    },
+                    "device": {
+                        "vendor": "Apple",
+                        "model": "Macintosh"
+                    },
+                    "engine": {
+                        "name": "Blink",
+                        "version": "134.0.0.0"
+                    }
                 }
-                setTimeout(function () {
-                    var loadingCover2 = document.getElementById('loading-cover-2');
-                    if (loadingCover2) {
-                        loadingCover2.style.opacity = 1;
+            }
+        </script>
+    </head>
+    <body>
+        <div class="ziggyLoader" id="ziggyLoader">
+            <div class="container">
+                <svg viewBox="0 0 46 50" focusable="false" aria-hidden="true" style="display:inline-block;fill:currentcolor;height:24px;width:24px;width:46px;height:50px;-webkit-animation:bob 800ms linear infinite normal forwards;animation:bob 800ms linear infinite normal forwards;">
+                    <path fill-rule="evenodd" clip-rule="evenodd" d="M39.9436 1.74993C39.685 1.46063 39.3511 1.33714 38.9704 1.33714L38.9668 1.35126C37.5519 1.35126 35.4655 3.05179 34.004 4.4348C30.9264 2.96006 27.145 2.2368 22.552 2.2368C17.959 2.2368 14.1776 2.96006 11.1036 4.43127C9.64206 3.04826 7.55563 1.34773 6.14434 1.34773C5.76009 1.34773 5.42971 1.47121 5.17116 1.76051C2.97341 4.23723 2.76513 10.1679 2.84414 13.5831C1.853 16.2504 1.35025 19.3692 1.35025 22.9325C1.35025 30.4191 3.53362 35.9653 7.83215 39.4334C10.7302 41.7655 14.5116 43.1097 19.3308 43.5119C19.1291 43.6103 18.9246 43.7083 18.7177 43.8075C18.3463 43.9855 17.9671 44.1673 17.5819 44.3621L15.8367 45.2018L14.8455 45.6781C14.5704 45.8188 14.2933 45.9551 14.013 46.0931C13.3089 46.4395 12.5847 46.7959 11.8218 47.2552L11.5597 47.3892C11.4843 47.4421 11.4161 47.5303 11.4017 47.6327C11.3658 47.8232 11.4986 48.0031 11.6926 48.0313C11.996 48.0753 12.2985 48.1241 12.6008 48.1729C13.2681 48.2806 13.935 48.3883 14.6121 48.4441L15.3483 48.5253C15.5925 48.55 15.8331 48.5711 16.0845 48.5852L17.5604 48.6664C17.7902 48.6734 18.0201 48.6734 18.2499 48.6734C19.9987 48.6734 21.7548 48.557 23.4929 48.2889C25.4608 47.996 27.3964 47.4563 29.253 46.7048C31.106 45.9533 32.8728 44.9725 34.4744 43.7835C37.6489 41.3597 40.1447 38.0998 41.6278 34.4694C42.1701 33.1534 42.5795 31.788 42.8668 30.4015C43.4557 28.1753 43.7537 25.6845 43.7537 22.9255C43.7537 19.3727 43.2546 16.2609 42.267 13.5937C42.3496 10.182 42.1449 4.23017 39.9436 1.74993ZM33.7454 2.83305C35.8857 0.927886 37.6022 0 38.9704 0C39.7712 0 40.4607 0.299887 40.9743 0.874965C43.3156 3.51044 43.7214 9.07776 43.6388 13.3785C44.6228 16.141 45.122 19.3515 45.122 22.9255C45.122 25.7585 44.8131 28.3764 44.199 30.7014C43.883 32.1973 43.4449 33.6332 42.8955 34.9633C41.3082 38.8477 38.6867 42.2594 35.3003 44.8419C33.6269 46.0838 31.7703 47.1246 29.7773 47.9325C27.7842 48.7369 25.7409 49.2979 23.7119 49.5978C21.9918 49.8659 20.1567 50 18.2571 50C18.0201 50 17.7794 50 17.5424 49.9929H17.4886L16.0126 49.9118C15.7397 49.8977 15.474 49.8765 15.201 49.8448L14.4828 49.7671C13.7915 49.7105 13.1226 49.6037 12.4731 49.4999C12.4343 49.4937 12.3956 49.4875 12.3569 49.4814L12.355 49.4811C12.0683 49.4353 11.7817 49.3895 11.5058 49.3473C11.0498 49.2838 10.6332 49.0368 10.3639 48.6699C10.0981 48.31 9.99039 47.8549 10.0622 47.4174C10.134 46.9764 10.389 46.5707 10.7697 46.299L10.8487 46.2426L10.9348 46.1967L11.1575 46.0838C11.9511 45.6075 12.6837 45.2477 13.3947 44.8984L13.3947 44.8984C13.4415 44.8754 13.4882 44.8525 13.5348 44.8297C13.7671 44.7158 13.9969 44.6031 14.2243 44.4856L14.2386 44.4785L14.253 44.4715L14.885 44.1681C11.7716 43.4413 9.16085 42.2135 6.97747 40.4565C2.34857 36.7168 0 30.8178 0 22.922C0 19.3374 0.502749 16.1198 1.4903 13.3538C1.4077 9.06012 1.81708 3.50692 4.15488 0.871437C4.66122 0.299887 5.3543 0 6.15152 0C7.51972 0 9.23626 0.927886 11.373 2.82952C14.4757 1.52413 18.1421 0.885549 22.5556 0.885549C26.969 0.885549 30.6427 1.52413 33.7454 2.83305ZM22.5592 9.70929C27.0732 9.70929 30.2944 10.5419 32.3951 12.2389C34.8766 14.2499 36.0904 17.7463 36.0904 22.9255C36.0904 33.8978 30.6822 36.1417 22.5592 36.1417C14.4361 36.1417 9.02797 33.8943 9.02797 22.9255C9.02797 17.7498 10.2346 14.2464 12.7232 12.2389C14.824 10.5349 18.0452 9.70929 22.5592 9.70929ZM17.9051 28.3058C19.4601 28.3058 20.7313 27.0675 20.7313 25.5504V22.3081C20.6559 22.3151 20.5769 22.3187 20.4979 22.3187C19.2482 22.3187 18.2391 21.3343 18.2391 20.1171C18.2391 19.1293 18.9034 18.2931 19.8192 18.0144C19.3164 17.5593 18.6449 17.277 17.9051 17.277C16.3502 17.277 15.0789 18.5154 15.0789 20.0325V25.5504C15.0789 27.0639 16.3502 28.3058 17.9051 28.3058ZM27.2096 28.3058C28.7646 28.3058 30.0358 27.0675 30.0358 25.5504V22.0929C29.9245 22.1105 29.8132 22.1211 29.6982 22.1211C28.4485 22.1211 27.4395 21.1367 27.4395 19.9196C27.4395 18.967 28.0607 18.159 28.9262 17.8521C28.4485 17.4922 27.856 17.277 27.2096 17.277C25.6547 17.277 24.3834 18.5154 24.3834 20.0325V25.5504C24.3834 27.0639 25.6547 28.3058 27.2096 28.3058Z" fill="white"></path>
+                </svg>
+                <div style="margin-top:18px;">Preparing your game…</div>
+            </div>
+        </div>
+        <script type="text/javascript">
+            function loadScript(url, callback) {
+                var head = document.head;
+                var script = document.createElement('script');
+                script.type = 'text/javascript';
+                script.src = url;
+                script.async = true;
+                script.onreadystatechange = callback;
+                script.onload = callback;
+                head.appendChild(script);
+            }
+            var options = {
+                "loader": "html5",
+                "loaderOptions": {
+                    "url": "https://foodstars-io.game-files.crazygames.com/foodstars-io/6/index.html"
+                },
+                "thumbnail": "foodstars-io_16x9/20240220111827/foodstars-io_16x9-cover",
+                "gameName": "FoodStars.io",
+                "gameHttps": true,
+                "gameSlug": "foodstars-io",
+                "gameId": "22197",
+                "buildId": "7af3b20c-cee0-489f-b8e9-de48c9bb33a5",
+                "gameStatus": "published",
+                "showAdOnExternal": "ALWAYS",
+                "showAdOnInternal": "DEFAULT",
+                "disableEmbedding": false,
+                "dollarRate": 0.917549884893367,
+                "upvotes": 32127,
+                "downvotes": 6411,
+                "releaseDate": "2023-10-06",
+                "locale": "en_US",
+                "controls": {
+                    "text": "<h2>Controls</h2>\n<ul>\n    <li>WASD or arrow keys = move</li>\n    <li>Left mouse button = attack</li>\n</ul>"
+                },
+                "videoThumbnail": "https://videos.crazygames.com/foodstars-io/1/foodstars-io-landscape-205x115_30fps.mp4",
+                "video": {
+                    "original": "https://videos.crazygames.com/foodstars-io/1/foodstars-io.mp4",
+                    "sizes": [{
+                        "width": 205,
+                        "height": 115,
+                        "location": "https://videos.crazygames.com/foodstars-io/1/foodstars-io-landscape-205x115_30fps.mp4"
+                    }, {
+                        "width": 249,
+                        "height": 140,
+                        "location": "https://videos.crazygames.com/foodstars-io/1/foodstars-io-landscape-249x140_30fps.mp4"
+                    }, {
+                        "width": 364,
+                        "height": 208,
+                        "location": "https://videos.crazygames.com/foodstars-io/1/foodstars-io-landscape-364x208_30fps.mp4"
+                    }, {
+                        "width": 494,
+                        "height": 276,
+                        "location": "https://videos.crazygames.com/foodstars-io/1/foodstars-io-landscape-494x276_30fps.mp4"
+                    }, {
+                        "width": 611,
+                        "height": 343,
+                        "location": "https://videos.crazygames.com/foodstars-io/1/foodstars-io-landscape-611x343_30fps.mp4"
+                    }],
+                    "blurredVideo": {
+                        "width": 922,
+                        "height": 532,
+                        "location": "https://videos.crazygames.com/foodstars-io/1/foodstars-io-landscape-922x532_30fps_blurred.mp4"
                     }
-                    setTimeout(function () {
-                        if (loadingCover2) {
-                            loadingCover2.style.opacity = 0;
-                        }
-                    }, 17500);
-                }, 15000);
-                setTimeout(function () {
-                    var refreshImg = document.getElementById('refreshImage');
-                    if (refreshImg !== null) {
-                        refreshImg.style.animation = 'slideUp 1.0s forwards';
-                        refreshImg.addEventListener("mousedown", function (event) {
-                            event.preventDefault();
-                            showLoadingInfoMessage();
-                        });
-                        refreshImg.addEventListener("touchstart", function (event) {
-                            event.preventDefault();
-                            showLoadingInfoMessage();
-                        });
-                        function showLoadingInfoMessage() {
-                            showRetryPopup("Loading is ALMOST done. foodstars.io is a first person shooter, so if you like shooting guns… wait a little bit more!<br>Click to close", false, false);
-                        }
-                        setTimeout(function () {
-                            refreshImg.style.animation = 'slideDown 1.0s forwards';
-                            setTimeout(function () {
-                                refreshImg.src = 'https://foodstars.io/refresh2.webp';
-                                setTimeout(function () {
-                                    refreshImg.src = 'https://foodstars.io/refresh2.webp';
-                                    refreshImg.style.animation = 'slideUp 1.0s forwards';
-                                }, 4000);
-                            }, 1000);
+                },
+                "sandbox": true,
+                "totalSizeBytes": 21376680,
+                "minTimeBetweenMidrollAdsInMs": 180000,
+                "minTimeBetweenRewardedAdsInMs": 5000,
+                "noMidrollAdInFirstMinutes": 3,
+                "noRewardedAdInFirstMinutes": 0,
+                "categoryEnSlug": "io",
+                "tagsEnSlugs": ["food", "strategy", "party", "battle-royale", "multiplayer"],
+                "isKids": false,
+                "androidFriendly": false,
+                "iosFriendly": false,
+                "hasMidroll": true,
+                "hasRewarded": true,
+                "showExternalProviderWarning": false,
+                "fullscreen": "ADDS_VALUE",
+                "orientation": "LANDSCAPE",
+                "apsStorageType": "disabled",
+                "userProgressionSaveMessage": "ingame",
+                "category": "Battle Royale",
+                "categoryLink": "https://www.crazygames.com/t/battle-royale",
+                "gameLink": "https://www.crazygames.com/game/foodstars-io",
+                "domainHasNoCMP": false,
+                "source": "games"
+            };
+            var SDK_READY = false;
+            var GF_READY = false;
+            var GF_LOAD_CALLED = false;
 
-                        }, 17500);
+            // Build GF path
+            var gfBuildPath = 'https://builds.crazygames.com/gameframe'
+            var gfDefaultVersion = '1'
+            var useLocalGF = false
+            var customGFHost = ''
+            var params = new URLSearchParams(window.location.search);
+            var version = params.get('v');
+            // Validate version param to prevent XSS
+            if (version) {
+                var versionRegex = /^\d+(\.\d+)?(\.\d+)?$/;
+                if (!versionRegex.test(version)) {
+                    console.error('Invalid Gameframe version provided, falling back to default version');
+                    version = null;
+                }
+            }
+            var gameframeJs = gfBuildPath + '/v' + (version || gfDefaultVersion) + '/bundle.js';
+            if (useLocalGF) {
+                gameframeJs = 'http://localhost:3002/static/js/bundle.js';
+            }
+
+            if (customGFHost) {
+                gameframeJs = customGFHost + '/static/js/bundle.js';
+            }
+
+            loadScript(gameframeJs, function() {
+                Crazygames.load(options).then(function() {
+                    var loaderWrapper = document.getElementById('ziggyLoader');
+                    var loaderStyles = document.getElementById('ziggyLoaderStyles');
+                    if (loaderWrapper && loaderStyles) {
+                        loaderWrapper.remove();
+                        loaderStyles.remove();
                     }
-                }, 10000);
+                });
             });
         </script>
-    </div>
-    <script>
-
-        function easeOutQuadPercentage(percent) {
-            var t = percent / 100;
-            return (1 - (1 - t) * (1 - t)) * 100.0;
-        }
-        function formatNumber(number) {
-            if (number < 1000) {
-                return number.toString(); // Return the original number if less than 1000
-            } else if (number < 1000000) {
-                return (number / 1000).toFixed(2) + 'k'; // Convert to 'k' format for thousands
-            } else {
-                return (number / 1000000).toFixed(2) + 'M'; // Convert to 'M' format for millions
-            }
-        }
-        function onWindowResize() {
-        };
-        onWindowResize();
-        window.onresize = onWindowResize;
-        window.onload = onWindowResize;
-
-        // Function to refresh an ad banner if it is visible
-        function refreshAdBanner(tagad) {
-        }
-        function SetAds(presetName72890, presetName300600, presetName300250) {
-        }
-    </script>
-    <style>
-        #words {
-            font-family: 'Fjalla One', sans-serif;
-            text-align: left;
-            justify-content: left;
-            user-select: none;
-            font-size: 37px;
-        }
-
-        #unity-logo {
-            max-width: 300px;
-        }
-
-        @media (max-width: 1200px) {
-            #words {
-                font-size: 30px;
-            }
-
-            #unity-logo {
-                max-width: 250px;
-            }
-        }
-
-        @media (max-width: 992px) {
-            #words {
-                font-size: 25px;
-            }
-
-            #unity-logo {
-                max-width: 200px;
-            }
-        }
-
-        @media (max-width: 768px) {
-            #words {
-                font-size: 20px;
-            }
-
-            #unity-logo {
-                max-width: 150px;
-            }
-        }
-
-        @media (max-width: 576px) {
-            #words {
-                font-size: 15px;
-            }
-
-            #unity-logo {
-                max-width: 100px;
-            }
-        }
-    </style>
-    <script src="customFetch.js"></script>
-    <script>
-            function isVirtualControls() {
-                var userAgent = navigator.userAgent.toLowerCase();
-
-                if (/windows nt/.test(userAgent) && !/windows phone/.test(userAgent)) {
-                    return false;
-                }
-
-                if (/CrOS/.test(userAgent)) {
-                    return false;
-                }
-
-                if (/mobile/.test(userAgent)) {
-                    return true;
-                }
-
-                var isIPad = /ipad|macintosh/.test(userAgent) && navigator.maxTouchPoints && navigator.maxTouchPoints > 1;
-                var isAndroidTablet = /android/.test(userAgent) && !/mobile/.test(userAgent);
-                if (isIPad || isAndroidTablet) {
-                    return true;
-                }
-
-                return false;
-            }
-
-            window.receivedServiceWorkerMessage = false;
-            function preventZoomDuringLoading(event) {
-                if (window.gameLoading) {
-                    event.preventDefault();
-                }
-            }
-            document.addEventListener('touchstart', preventZoomDuringLoading, { passive: false });
-            document.addEventListener('touchmove', preventZoomDuringLoading, { passive: false });
-            function playerPrefsSetFloat(key, value) {
-                localStorage.setItem(key, value.toString());
-            }
-            function playerPrefsGetFloat(key, defaultValue = 0.9) {
-                const storedValue = localStorage.getItem(key);
-                const parsedValue = storedValue ? parseFloat(storedValue) : defaultValue;
-                return parsedValue;
-            }
-          var container = document.querySelector("#unity-container");
-          var canvas = document.querySelector("#unity-canvas");
-          const loadingCover = document.querySelector("#loading-cover");
-          const fastLoadingAnim = document.querySelector("#unity-loading-bar-fast");
-          const progressBarEmpty = document.querySelector("#unity-progress-bar-empty");
-          const loadingTxt = document.querySelector("#loadingTxt");
-          var progressBarFull = document.querySelector("#unity-progress-bar-full");
-          var isMobile = isVirtualControls();
-
-        function loadAdBannerScript(tagad) {
-        }
-
-        if (isMobile){
-        }
-          else{
-        }
-
-        //var buildUrl = isMobile ? "mobile/Build" : "Build";
-
-        var buildUrl = "Build";
-
-        var loaderUrl = buildUrl + "/buildvanilla.loader.js";
-        var config = {
-            dataUrl: buildUrl + "/buildvanilla.data.br",
-            frameworkUrl: buildUrl + "/buildvanilla.framework.js.br",
-            codeUrl: buildUrl + "/buildvanilla.wasm.br",
-            streamingAssetsUrl: "StreamingAssets",
-            companyName: "LegionPlatforms",
-            productName: "FoodStars.io",
-            productVersion: "1.46",
-            devicePixelRatio: playerPrefsGetFloat("renderScaleWeb", 0.90)
-          };
-          if (isMobile) {
-            var meta = document.createElement('meta');
-            meta.name = 'viewport';
-            meta.content = 'width=device-width, height=device-height, initial-scale=1.0, user-scalable=no, shrink-to-fit=yes';
-            document.getElementsByTagName('head')[0].appendChild(meta);
-            config.devicePixelRatio = playerPrefsGetFloat("renderScaleWeb", 0.90) * 1.00;
-          }
-            var tips = [
-                "Downloading Models",
-                "Installing Menu",
-                "Downloading Maps",
-                "Downloading Buttons",
-                "Installing 3D Objects",
-                "Downloading Characters",
-                "Installing Animations",
-                "Downloading Graphics",
-                "Downloading Gradients",
-                "Installing Shop",
-                "Installing Servers",
-                "Downloading Lobbies",
-                "Installing Shaders",
-                "Downloading Game Modes",
-                "Downloading Enemy Profiles",
-                "Installing Weapon Upgrades",
-                "Downloading Armor Enhancements",
-                "Installing Soundtracks",
-                "Downloading Voice Packs",
-                "Downloading Multiplayer Modes",
-                "Installing Special Effects",
-                "Downloading Achievements",
-                "Downloading Replay Data",
-                "Downloading Leaderboard Information",
-                "Installing Custom Skins",
-                "Installing Environmental Details"
-            ];
-            function updateLoadingTextWithTip() {
-                var randomTip = tips[Math.floor(Math.random() * tips.length)];
-                if (!window.receivedServiceWorkerMessage)
-                    loadingTxt.innerHTML = randomTip;
-                var longerDuration = Math.random() < 0.2;
-                var rnd2 = Math.random() < 0.5;
-                var nextTipTimeout = longerDuration ? 1000 : (rnd2 ? 250 : 500);
-                clearTimeout(tipInterval);
-                tipInterval = setTimeout(updateLoadingTextWithTip, nextTipTimeout);
-            }
-            function easeOutQuadPercentage(percent) {
-                var t = percent / 100;
-                return (1 - (1 - t) * (1 - t)) * 100.0;
-            }
-            var tipInterval;
-          loadingCover.style.display = "";
-          const _script = document.createElement("script");
-          _script.src = loaderUrl;
-          window.gameLoading = true;
-          reportLoadingStart();
-          var reachedLastLoadingStep = false;
-          _script.onload = () => {
-              createUnityInstance(canvas, config, (progress) => {
-                  /* customFetch.js is responsible for progress handling */
-              }).then((unityInstance) => {
-                  clearInterval(tipInterval);
-                  window.unityInstance = unityInstance;
-                  setTimeout(function () {
-                      var animDuration = 200;
-                      loadingCover.animate([
-                          { opacity: '1' },
-                          { opacity: '0' }
-                      ], {
-                          duration: animDuration,
-                          fill: 'forwards'
-                      });
-                      loadingCover.animate([
-                          { transform: 'scale(1)', opacity: '1' },
-                          { transform: 'scale(2)', opacity: '0' }
-                      ], {
-                          duration: animDuration,
-                          fill: 'forwards'
-                      });
-                      setTimeout(function () {
-                          if (loadingCover) {
-                              loadingCover.remove();
-                          }
-                      }, animDuration);
-                  }, 100);
-                  window.gameLoading = false;
-                  reportLoadingFinished();
-                  console.log('%cWARNING: Do not paste any scripts into this console. Pasting script/code can compromise your device and may lead to a ban.', 'color: red; font-weight: bold;');
-              }).catch((error) => {
-                  let errorMessage = (error.message ? error.message : error.toString()).toLowerCase();
-                  customOnError(errorMessage);
-              });
-            };
-            (function () {
-                const originalConsoleError = console.error;
-                console.error = function (...args) {
-                    const errorMessage = args.join(' ');
-                    if (errorMessage.includes("extra work")) {
-                        return;
-                    }
-                    customOnError(errorMessage);
-                    originalConsoleError.apply(console, args);
-                };
-            })();
-            function customOnError(message) {
-                var isFileDownloadError = message.toLowerCase().includes('failed to download file') && (message.includes('.data') || message.includes('.wasm') || message.includes('.br'));
-                var isWasmError = message.toLowerCase().includes('both async and sync fetching of the wasm failed');
-                var isUnableToLoadFileError = message.toLowerCase().includes("unable to load file") && (message.includes('.js') || message.includes('.br') || message.includes('.framework'));
-                if (isFileDownloadError || isWasmError) {
-                    showRetryPopup("Failed Downloading Game Files. <br>Click to try again.", true, true);
-                }
-                else if (isUnableToLoadFileError) {
-                    showRetryPopup("Failed Downloading Game Files. <br>Click to try again.", true, false);
-                }
-            }
-            window.addEventListener('offline', function () {
-                if (window.gameLoading)
-                    showRetryPopup("You are Offline. Please Connect to the internet. <br>Click to try again", true, false);
-            });
-            var totalRetryTimes = 0;
-            const retryUnityLoad = () => {
-                console.log("Retrying to load the unity instance (retryUnityLoad)");
-                if (!navigator.onLine) {
-                    console.log("You are not online! Abort retryUnityLoad.");
-                    return;
-                }
-                var popup = document.getElementById('unityRetryPopup');
-                if (popup != null)
-                    document.body.removeChild(popup);
-                if (window.unityInstance)
-                {
-                    console.log("unityInstance exists! Abort retryUnityLoad.");
-                    return;
-                }
-                removeScriptBySrc(loaderUrl);
-                const _newScript = document.createElement("script");
-                _newScript.src = loaderUrl;
-                window.gameLoading = true;
-                reportLoadingStart();
-                var reachedLastLoadingStep = false;
-                _newScript.onload = () => {
-                    createUnityInstance(canvas, config, (progress) => {
-                        /* customFetch.js is responsible for progress handling */
-                    }).then((unityInstance) => {
-                        clearInterval(tipInterval);
-                        window.unityInstance = unityInstance;
-                        setTimeout(function () {
-                            var animDuration = 200;
-                            loadingCover.animate([
-                                { opacity: '1' },
-                                { opacity: '0' }
-                            ], {
-                                duration: animDuration,
-                                fill: 'forwards'
-                            });
-                            loadingCover.animate([
-                                { transform: 'scale(1)', opacity: '1' },
-                                { transform: 'scale(2)', opacity: '0' }
-                            ], {
-                                duration: animDuration,
-                                fill: 'forwards'
-                            });
-                            setTimeout(function () {
-                                if (loadingCover) {
-                                    loadingCover.remove();
-                                }
-                            }, animDuration);
-                        }, 100);
-                        window.gameLoading = false;
-                        reportLoadingFinished();
-                        console.log('%cWARNING: Do not paste any scripts into this console. Pasting script/code can compromise your device and may lead to a ban.', 'color: red; font-weight: bold;');
-                    }).catch((error) => {
-                        let errorMessage = (error.message ? error.message : error.toString()).toLowerCase();
-                        customOnError(errorMessage);
-                    });
-                };
-                document.body.appendChild(_newScript);
-            };
-            function showRetryPopup(message, retry, retryRn) {
-                if (!window.gameLoading)
-                    return;
-                if (window.unityInstance)
-                    return;
-                if (retryRn && totalRetryTimes <= 3) {
-                    retryUnityLoad();
-                    return;
-                }
-                var existingPopup = document.getElementById('unityRetryPopup');
-                if (existingPopup) {
-                    existingPopup.querySelector('.popup-content').innerHTML = message;
-                    return;
-                }
-                var popup = document.createElement("div");
-                popup.id = 'unityRetryPopup';
-                popup.style.position = "fixed";
-                popup.style.left = "0";
-                popup.style.top = "0";
-                popup.style.width = "100%";
-                popup.style.height = "100%";
-                popup.style.backgroundColor = "rgba(0, 0, 0, 0.9)";
-                popup.style.display = "flex";
-                popup.style.alignItems = "center";
-                popup.style.justifyContent = "center";
-                popup.style.userSelect = "none";
-                popup.style.zIndex = "1000";
-                var content = document.createElement("div");
-                content.style.padding = "20px";
-                content.style.backgroundColor = "#333"; // Dark background for the content
-                content.style.color = "#fff"; // White text color
-                content.style.borderRadius = "15px"; // Rounded corners
-                content.style.textAlign = "center";
-                content.style.maxWidth = "80%";
-                content.style.fontSize = "18px";
-                content.innerHTML = message;
-                content.style.fontFamily = "'Segoe UI', Tahoma, Geneva, Verdana, sans-serif";
-                content.style.boxShadow = "0 10px 10px rgba(0, 0, 0, 0.2)";
-                content.style.cursor = "pointer"; // Change cursor on hover
-                content.style.userSelect = "none";
-                popup.appendChild(content);
-                document.body.appendChild(popup);
-                if (retry) {
-                    popup.addEventListener("click", retryUnityLoad);
-                    popup.addEventListener("touchstart", retryUnityLoad, { passive: true });
-                }
-                else {
-                    popup.addEventListener("click", () => {
-                        document.body.removeChild(popup);
-                    });
-                    popup.addEventListener("touchstart", () => {
-                        document.body.removeChild(popup);
-                    }, { passive: true });
-                }
-            }
-            document.body.appendChild(_script);
-            function removeScriptBySrc(src) {
-                let scripts = document.getElementsByTagName('script');
-                for (let i = 0; i < scripts.length; i++) {
-                    if (scripts[i].src === src) {
-                        scripts[i].parentNode.removeChild(scripts[i]);
-                    }
-                }
-            }
-    </script>
-    <script>
-        function testDevice() {
-            try {
-                navigator.getBattery().then(function (battery) {
-                    if (battery.charging && battery.chargingTime === 0) {
-                        unityInstance.SendMessage('MainManager', 'OnGotDevice', "Desktop");
-                    } else {
-                        unityInstance.SendMessage('MainManager', 'OnGotDevice', "Laptop");
-                    }
-                }).catch(function (error) {
-                    unityInstance.SendMessage('MainManager', 'OnGotDevice', "Unknown");
-                });
-            } catch (error) {
-                unityInstance.SendMessage('MainManager', 'OnGotDevice', "Unknown");
-            }
-        }
-        function SetPaypalPaymentWindow(x) {
-            document.getElementById('paypalPaymentWindow').style.display = x;
-        }
-        function CancelPaypalProcess() {
-            document.getElementById('paypalPaymentWindow').style.display = "none";
-            unityInstance.SendMessage('Payments', 'OnPayPalPurchaseFinished', "0");
-        }
-        function Purchase(amount) {
-            window.currentPaymentPrice = amount;
-            document.getElementById('paypalPaymentWindow').style.display = 'block';
-        }
-        function SetURL(add) {
-            var currentURL = window.location.protocol + "//" + window.location.host + window.location.pathname + add;
-            window.history.pushState({ path: currentURL }, '', currentURL);
-        }
-        function copyCurrentURL() {
-            var u = window.location.href;
-            setClipboard(u);
-        }
-        function toggleFullscreen() {
-            if (document.fullscreenElement === null) {
-                openFullscreen();
-                return;
-            }
-            exitFullscreen();
-        }
-        function openFullscreen() {
-            document.documentElement.requestFullscreen();
-        }
-        function exitFullscreen() {
-            document.exitFullscreen();
-        }
-        async function setClipboard(stringToSetAsClipboard) {
-            try {
-                await navigator.clipboard.writeText(stringToSetAsClipboard);
-                console.log('Text copied to clipboard successfully!');
-            } catch (err) {
-                console.error('Failed to copy text: ', err);
-            }
-        }
-        function getClipboard() {
-            navigator.clipboard.readText()
-                .then((clipboardContent) => {
-                    unityInstance.SendMessage('MainManager', 'OnGotClipboard', clipboardContent);
-                })
-                .catch((error) => {
-                    console.error('Clipboard access error:', error);
-                });
-        }
-        canvas.addEventListener("webglcontextlost", function (event) {
-            event.preventDefault();
-            // Add code to stop your game loop
-            // Attempt to restore the context
-            retryUnityLoad();
-        }, false);
-    </script>
-    <script src="sdkManager.js"></script>
-</body>
+    </body>
 </html>
-
